@@ -5,6 +5,8 @@
 #include <qcamera>
 #include <QCameraViewfinder>
 #include <QMediaPlayer>
+#include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;

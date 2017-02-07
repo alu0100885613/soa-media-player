@@ -32,8 +32,15 @@ void MainWindow::on_webcamButton_clicked()
 void MainWindow::on_playButton_clicked()
 {
     if( qmedia->mediaStatus() == QMediaPlayer::NoMedia ){
-        camera->setViewfinder(ui->pantalla);
-        camera->start();
+        QString VideoName = QFileDialog::getOpenFileName(this,
+               tr("Load Video"), QString(),
+               tr("Mp4 Files (*.mp4);;AMV Files (*.amv)"));
+
+        if( !VideoName.isEmpty() ){
+            qmedia->setMedia(QUrl::fromLocalFile(VideoName));
+            qmedia->setVideoOutput(ui->pantalla);
+            qmedia->play();
+        }
     }
 
 }
