@@ -43,6 +43,21 @@ void MainWindow::on_playButton_clicked()
         }
     }
 
+    const QString play = "P&lay";
+    const QString pause = "P&ause";
+
+    if( ui->playButton->text() == play ){
+        ui->playButton->setText(pause);
+
+        if( qmedia->state() == QMediaPlayer::PausedState )
+            qmedia->play();
+
+    } else {
+        ui->playButton->setText(play);
+        qmedia->pause();
+    }
+
+
 }
 
 
