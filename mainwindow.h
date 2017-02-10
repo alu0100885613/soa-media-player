@@ -28,6 +28,8 @@ private slots:
 
     void on_stopButton_clicked();
 
+    void on_normalButton_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
     QCamera *camera;

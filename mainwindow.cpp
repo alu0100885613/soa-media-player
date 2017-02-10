@@ -22,6 +22,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_webcamButton_clicked()
 {
 
+    if( ( qmedia->state() == QMediaPlayer::PlayingState ) || ( qmedia->state() == QMediaPlayer::PausedState ) ){
+        qmedia->stop();
+        ui->playButton->setText("P&lay");
+    }
+
     if( camera->state() == QCamera::ActiveState )
         return;
 
@@ -31,6 +36,11 @@ void MainWindow::on_webcamButton_clicked()
 
 void MainWindow::on_playButton_clicked()
 {
+    if( camera->state() == QCamera::ActiveState ){
+        camera->stop();
+        qmedia->setVideoOutput(ui->pantalla);
+    }
+
     if( qmedia->mediaStatus() == QMediaPlayer::NoMedia ){
         QString VideoName = QFileDialog::getOpenFileName(this,
                tr("Load Video"), QString(),
@@ -46,10 +56,10 @@ void MainWindow::on_playButton_clicked()
     const QString play = "P&lay";
     const QString pause = "P&ause";
 
-    if( ui->playButton->text() == play ){
+    if( ui->playButton->text() == play && (qmedia->mediaStatus() != QMediaPlayer::NoMedia) ){
         ui->playButton->setText(pause);
 
-        if( qmedia->state() == QMediaPlayer::PausedState )
+        if( ( qmedia->state() == QMediaPlayer::PausedState ) || ( qmedia->state() == QMediaPlayer::StoppedState) )
             qmedia->play();
 
     } else {
@@ -63,8 +73,25 @@ void MainWindow::on_playButton_clicked()
 
 void MainWindow::on_stopButton_clicked()
 {
-    if( camera->state() == QCamera::ActiveState )
+    if( camera->state() == QCamera::ActiveState ){
         camera->stop();
+        qmedia->setVideoOutput(ui->pantalla);
+    }
+
+    if( ( qmedia->state() ==  QMediaPlayer::PausedState ) || ( qmedia->state() ==  QMediaPlayer::PlayingState ) ){
+         if( qmedia->state() ==  QMediaPlayer::PlayingState )
+            ui->playButton->setText("P&lay");
+
+         qmedia->stop();
+    }
 
 
+}
+
+void MainWindow::on_normalButton_clicked(bool checked)
+{
+    if(checked)
+        qmedia->setMuted(true);
+    if(!checked)
+        qmedia->setMuted(false);
 }
