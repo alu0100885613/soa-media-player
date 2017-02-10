@@ -16,6 +16,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete camera;
+    delete qmedia;
 }
 
 
@@ -30,12 +31,14 @@ void MainWindow::on_webcamButton_clicked()
     if( camera->state() == QCamera::ActiveState )
         return;
 
+
     camera->setViewfinder(ui->pantalla);
     camera->start();
 }
 
 void MainWindow::on_playButton_clicked()
 {
+
     if( camera->state() == QCamera::ActiveState ){
         camera->stop();
         qmedia->setVideoOutput(ui->pantalla);
@@ -48,7 +51,9 @@ void MainWindow::on_playButton_clicked()
 
         if( !VideoName.isEmpty() ){
             qmedia->setMedia(QUrl::fromLocalFile(VideoName));
+            this->setWindowTitle(VideoName);
             qmedia->setVideoOutput(ui->pantalla);
+            ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
             qmedia->play();
         }
     }
@@ -104,5 +109,5 @@ void MainWindow::on_rewindButton_clicked(bool checked)
 void MainWindow::on_forkwardButton_clicked(bool checked)
 {
     if(checked)
-        qmedia->setPlaybackRate(3.0);
+        qmedia->setPlaybackRate(1.5);
 }
