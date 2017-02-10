@@ -91,7 +91,18 @@ void MainWindow::on_stopButton_clicked()
 void MainWindow::on_normalButton_clicked(bool checked)
 {
     if(checked)
-        qmedia->setMuted(true);
-    if(!checked)
-        qmedia->setMuted(false);
+        qmedia->setPlaybackRate(1.0);
+
+}
+
+void MainWindow::on_rewindButton_clicked(bool checked)
+{
+    if(checked)
+        qmedia->setPlaybackRate(-1.0);
+}
+
+void MainWindow::on_forkwardButton_clicked(bool checked)
+{
+    if(checked)
+        qmedia->setPlaybackRate(3.0);
 }

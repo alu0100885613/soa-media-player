@@ -30,6 +30,10 @@ private slots:
 
     void on_normalButton_clicked(bool checked);
 
+    void on_rewindButton_clicked(bool checked);
+
+    void on_forkwardButton_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
     QCamera *camera;
