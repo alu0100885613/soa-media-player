@@ -15,10 +15,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
+    <item row="2" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QRadioButton" name="rewindButton">
+        <property name="styleSheet">
+         <string notr="true">font: 13pt &quot;Didot&quot;;</string>
+        </property>
         <property name="text">
          <string>Rewind</string>
         </property>
@@ -26,40 +29,110 @@
       </item>
       <item>
        <widget class="QRadioButton" name="normalButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+font: 13pt &quot;Didot&quot;;</string>
+        </property>
         <property name="text">
          <string>Normal</string>
+        </property>
+        <property name="shortcut">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QRadioButton" name="forkwardButton">
+        <property name="styleSheet">
+         <string notr="true">font: 13pt &quot;Didot&quot;;</string>
+        </property>
         <property name="text">
          <string>Forkward</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="1">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QPushButton" name="playButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>P&amp;lay</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <activeon>:/play_image.jpg</activeon>
+         </iconset>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="stopButton">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
         <property name="text">
          <string>Stop</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <selectedon>:/boton-detener_318-107016.jpg</selectedon>
+         </iconset>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="webcamButton">
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::RightToLeft</enum>
+        </property>
         <property name="text">
          <string>W&amp;ebcam</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <selectedon>:/herramienta-de-camaras-web-en-forma-circular-negro_318-56301.jpg</selectedon>
+         </iconset>
         </property>
        </widget>
       </item>
@@ -72,6 +145,15 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>640</width>
+        <height>360</height>
+       </size>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
       </property>
      </widget>
     </item>
@@ -86,23 +168,6 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuVideo">
-    <property name="title">
-     <string>Video</string>
-    </property>
-    <addaction name="actionPlay"/>
-    <addaction name="actionStop"/>
-    <addaction name="actionLoad"/>
-   </widget>
-   <widget class="QMenu" name="menuWebcam">
-    <property name="title">
-     <string>Webcam</string>
-    </property>
-    <addaction name="actionStart"/>
-    <addaction name="actionStop_2"/>
-   </widget>
-   <addaction name="menuVideo"/>
-   <addaction name="menuWebcam"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -147,6 +212,14 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>rewindButton</tabstop>
+  <tabstop>webcamButton</tabstop>
+  <tabstop>playButton</tabstop>
+  <tabstop>forkwardButton</tabstop>
+  <tabstop>stopButton</tabstop>
+  <tabstop>normalButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
