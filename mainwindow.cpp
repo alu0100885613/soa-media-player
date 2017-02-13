@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     camera(new QCamera(this)),
     qmedia(new QMediaPlayer(this))
 {
+
     ui->setupUi(this);
 
 }
@@ -31,6 +32,8 @@ void MainWindow::on_webcamButton_clicked()
     if( camera->state() == QCamera::ActiveState )
         return;
 
+    QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
+    setWindowTitle(cameras[0].deviceName());
 
     camera->setViewfinder(ui->pantalla);
     camera->start();
@@ -44,7 +47,7 @@ void MainWindow::on_playButton_clicked()
         qmedia->setVideoOutput(ui->pantalla);
     }
 
-    if( qmedia->mediaStatus() == QMediaPlayer::NoMedia ){
+    if( qmedia->mediaStatus() == QMediaPlayer::NoMedia || qmedia->state() == QMediaPlayer::StoppedState  ){
         QString VideoName = QFileDialog::getOpenFileName(this,
                tr("Load Video"), QString(),
                tr("Mp4 Files (*.mp4);;AMV Files (*.amv)"));
@@ -53,8 +56,15 @@ void MainWindow::on_playButton_clicked()
             qmedia->setMedia(QUrl::fromLocalFile(VideoName));
             this->setWindowTitle(VideoName);
             qmedia->setVideoOutput(ui->pantalla);
-            ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
             qmedia->play();
+
+            const int plusWidth = (width()-ui->pantalla->width());
+            const int plusHeight = (height()-ui->pantalla->height());
+
+            if(qmedia->state() == QMediaPlayer::PlayingState)
+                setBaseSize(640+plusWidth,360+plusHeight);
+
+            ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
         }
     }
 
@@ -106,7 +116,7 @@ void MainWindow::on_rewindButton_clicked(bool checked)
         qmedia->setPlaybackRate(-1.0);
 }
 
-void MainWindow::on_forkwardButton_clicked(bool checked)
+void MainWindow::on_forwardButton_clicked(bool checked)
 {
     if(checked)
         qmedia->setPlaybackRate(1.5);

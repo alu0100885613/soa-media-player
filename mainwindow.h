@@ -7,6 +7,7 @@
 #include <QMediaPlayer>
 #include <QFileDialog>
 #include <QList>
+#include <QCameraInfo>
 #include <QtDebug>
 #include <QDebug>
 
@@ -34,7 +35,7 @@ private slots:
 
     void on_rewindButton_clicked(bool checked);
 
-    void on_forkwardButton_clicked(bool checked);
+    void on_forwardButton_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
