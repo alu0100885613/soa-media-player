@@ -10,7 +10,15 @@ MainWindow::MainWindow(QWidget *parent) :
 {
 
     ui->setupUi(this);
+    connect(qmedia,static_cast<void(QMediaPlayer::*)(QMediaPlayer::Error)>(&QMediaPlayer::error),
+            [=]{
+                QMessageBox::critical(this,tr("Error"),qmedia->errorString(),tr("Ok"));
+            });
 
+    connect(camera,static_cast<void(QCamera::*)(QCamera::Error)>(&QCamera::error),
+            [=]{
+                QMessageBox::critical(this,tr("Error"),camera->errorString(),tr("Ok"));
+            });
 }
 
 MainWindow::~MainWindow()
@@ -68,7 +76,7 @@ void MainWindow::on_playButton_clicked()
 
             ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
         } else {
-            QMessageBox::warning(this,"Advertencia", "No ha elegido ningún vídeo", "Ok");
+            QMessageBox::warning(this,tr("Advertencia"), tr("No ha elegido ningún vídeo"), "Ok");
             return;
         }
     }
