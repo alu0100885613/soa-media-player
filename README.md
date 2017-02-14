@@ -15,8 +15,8 @@ Reproductor multimedia, que carga y reproduce videos, permitiendo pausarlos, par
 ## Requisitos para compilar y ejecutar
 
 1. Que la bash conozco el comando `qmake`. :mag:
-    1.1. Para esto, hará falta editar el fichero **~/profile** en Linux :penguin: y **~/.bash_profile** en           
-         MAC :green_apple:.Podemos usar `vi ~/.bash_profile`, para añadir la ruta en la que se encuentra `qmake`
+    
+    1.1. Para esto, hará falta editar el fichero **~/profile** en Linux :penguin: y **~/.bash_profile** en            MAC :green_apple:.Podemos usar `vi ~/.bash_profile`, para añadir la ruta en la que se encuentra `qmake`
          al PATH, la cuál será de esta forma: 
         `PATH=$PATH:/Users/<tu usuario>/Qt/<versión (5.8 recomendada) >/clang_64/bin`.
 
