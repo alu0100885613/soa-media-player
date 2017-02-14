@@ -42,6 +42,7 @@ Los botones tienen iconos. :new_moon_with_face:
 Los videos que reproduce son .mp4 y .amv. :neckbeard:
 Existen ventanas de advertencia para avisar al usuario. :warning:
 El botón Play / Pause es el mismo pero cambia de nombre dependiendo del estado del vídeo.
+Manejo de errores del reproductor y la cámara.
 
 
  **Eduardo Borges Fernández** (alu0100885613@ull.edu.es)
