@@ -48,7 +48,8 @@ void MainWindow::on_playButton_clicked()
     }
 
     if( qmedia->mediaStatus() == QMediaPlayer::NoMedia || qmedia->state() == QMediaPlayer::StoppedState  ){
-        QString VideoName = "";
+        const QString EmptyName;
+        QString VideoName = EmptyName;
         VideoName = QFileDialog::getOpenFileName(this,
                tr("Load Video"), QString(),
                tr("Mp4 Files (*.mp4);;AMV Files (*.amv)"));
@@ -68,6 +69,7 @@ void MainWindow::on_playButton_clicked()
             ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
         } else {
             QMessageBox::warning(this,"Advertencia", "No ha elegido ningún vídeo", "Ok");
+            return;
         }
     }
 
