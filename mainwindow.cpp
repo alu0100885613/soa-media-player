@@ -48,7 +48,8 @@ void MainWindow::on_playButton_clicked()
     }
 
     if( qmedia->mediaStatus() == QMediaPlayer::NoMedia || qmedia->state() == QMediaPlayer::StoppedState  ){
-        QString VideoName = QFileDialog::getOpenFileName(this,
+        QString VideoName = "";
+        VideoName = QFileDialog::getOpenFileName(this,
                tr("Load Video"), QString(),
                tr("Mp4 Files (*.mp4);;AMV Files (*.amv)"));
 
@@ -62,9 +63,11 @@ void MainWindow::on_playButton_clicked()
             const int plusHeight = (height()-ui->pantalla->height());
 
             if(qmedia->state() == QMediaPlayer::PlayingState)
-                setBaseSize(640+plusWidth,360+plusHeight);
+                resize(640+plusWidth,360+plusHeight);
 
             ui->pantalla->setAspectRatioMode(Qt::KeepAspectRatioByExpanding);
+        } else {
+            QMessageBox::warning(this,"Advertencia", "No ha elegido ningún vídeo", "Ok");
         }
     }
 

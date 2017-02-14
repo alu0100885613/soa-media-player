@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <qcamera>
 #include <QCameraViewfinder>
 #include <QMediaPlayer>
 #include <QFileDialog>
@@ -10,6 +9,7 @@
 #include <QCameraInfo>
 #include <QtDebug>
 #include <QDebug>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
